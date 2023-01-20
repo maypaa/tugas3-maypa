@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="Biodata"/>
+<meta name="Keywords" content="Biodata"/>
+<meta name="authors" content="Angga"/>
+<meta charset="UTF-8"/>
+<title>Biodata</title>
+<link rel="stylesheet" href="styleku.css"/>
+</head>
+<body>
+<fieldset class="h"/>
+<img src="a.jpg" width="250px" height="420px"/>
+
+<table style="width: 980px;">
+
+</table>
+</fieldset>
+<script>
+    async function data(){
+        const cat= await fetch("/api/biodata");
+        const data=await cat.json();
+        let i =0;
+        const tabel = document.querySelector("table");
+        for(let babamu in data){
+            const tr = document.createElement("tr"); 
+            console.log(data[babamu]);
+            data[babamu].forEach(e => {
+                    console.log(e);
+            if(i===0){
+                const th = document.createElement("th"); 
+                th.textContent=e;
+                tr.appendChild(th);
+            }else{
+                const td = document.createElement("td"); 
+                td.textContent=e;
+                tr.appendChild(td);
+            }
+            i++;
+            });
+            tabel.appendChild(tr);
+            i=0;
+        }
+    }
+
+    data();
+</script>
+</body>
+</html>
